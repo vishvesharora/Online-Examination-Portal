@@ -1,0 +1,16 @@
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" >
+    {{ message }}
+    {% if 'prof_login' in message.extra_tags %}
+        <a href= {% url 'teacher_login' %} class="alert-link">Click Here to Login</a>  
+    {% elif 'stud_login' in message.extra_tags %}
+        <a href= {% url 'student_login' %} class="alert-link">Click Here to Login</a>  
+    {% endif %}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+</div>
+{% endfor %}
+
